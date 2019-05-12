@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class StudentServiceImpl implements StudentService {
 
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     @Override
     public void saveStudent(Student student) {
@@ -31,9 +31,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> getStudentById(Long id) {
+    public Student getStudentById(Long id) {
 
-        return Optional.of(studentRepository.findById(id).get());
+        return studentRepository.findById(id).get();
     }
 
     @Override
